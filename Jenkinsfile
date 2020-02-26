@@ -22,7 +22,14 @@ node {
             sh 'echo "Tests passed"'
         }
     }
-
+        
+    stage('analyze') {
+        steps {
+            sh 'echo "docker.io/irobert0126/imagescantest:latest `pwd`/Dockerfile" > anchore_images'
+            anchore name: 'anchore_images'
+        }
+    }
+    
     stage('Push image') {
         /* Finally, we'll push the image with two tags:
          * First, the incremental build number from Jenkins
