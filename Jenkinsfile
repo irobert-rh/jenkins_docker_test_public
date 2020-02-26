@@ -25,7 +25,7 @@ node {
         
     stage('analyze') {
         steps {
-            sh 'echo "docker.io/irobert0126/imagescantest:latest `pwd`/Dockerfile" > anchore_images'
+            sh 'echo "irobert0126/imagescantest:latest `pwd`/Dockerfile" > anchore_images'
             anchore name: 'anchore_images'
         }
     }
