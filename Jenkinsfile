@@ -22,11 +22,11 @@ node {
             sh 'echo "Tests passed"'
         }
     }
-        
-    stage('analyze') {
+    
+    stage(‘Container Security Scan’) {
         steps {
-            sh 'echo "irobert0126/imagescantest:latest `pwd`/Dockerfile" > anchore_images'
-            anchore name: 'anchore_images'
+            sh ‘echo “docker.io/irobert0126/imagescantest `pwd`/Dockerfile” > anchore_images’
+            anchore name: ‘anchore_images’
         }
     }
     
