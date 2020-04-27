@@ -24,8 +24,12 @@ node {
     }
     
     stage('Container Security Scan') {
+        // Anchore Image Scanner
+        /*
         sh 'echo "docker.io/irobert0126/imagescantest `pwd`/Dockerfile" > anchore_images'
         anchore name: 'anchore_images'
+        */
+        sh 'docker run --rm aquasec/trivy irobert0126/imagescantest'
     }
     
     stage('Push image') {
