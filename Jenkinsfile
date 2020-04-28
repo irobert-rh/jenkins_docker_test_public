@@ -29,7 +29,10 @@ node {
         sh 'echo "docker.io/irobert0126/imagescantest `pwd`/Dockerfile" > anchore_images'
         anchore name: 'anchore_images'
         */
-        sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.2:4954 irobert0126/imagescantest'
+        
+        // Trivy Image Scanner
+        // sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.2:4954 irobert0126/imagescantest'
+        aqua apiURL: 'http://172.17.0.2:4954', customFlags: '', hideBase: false, hostedImage: '', localImage: 'irobert0126/imagescantest', locationType: 'local', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
     }
     
     stage('Push image') {
