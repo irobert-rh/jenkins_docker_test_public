@@ -31,8 +31,8 @@ node {
         */
         
         // Trivy Image Scanner
-        // sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.2:4954 irobert0126/imagescantest'
-        aqua locationType: 'local', localImage: 'irobert0126/imagescantest', caCertificates:false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
+        sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.2:4954 irobert0126/imagescantest'
+        // aqua locationType: 'local', localImage: 'irobert0126/imagescantest', caCertificates:false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
     }
     
     stage('Push image') {
@@ -40,9 +40,12 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
+        
+        /*
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
+        */
     }
 }
