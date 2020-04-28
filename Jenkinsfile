@@ -32,7 +32,7 @@ node {
         
         // Trivy Image Scanner
         // sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.2:4954 irobert0126/imagescantest'
-        aqua locationType: 'hosted', apiURL: 'http://172.17.0.2:4954', customFlags: '', hideBase: false, hostedImage: '', localImage: 'irobert0126/imagescantest', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
+        aqua locationType: 'hosted', customFlags: '', hideBase: false, hostedImage: '', localImage: 'irobert0126/imagescantest', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
     }
     
     stage('Push image') {
