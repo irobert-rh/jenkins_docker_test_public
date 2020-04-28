@@ -29,7 +29,7 @@ node {
         sh 'echo "docker.io/irobert0126/imagescantest `pwd`/Dockerfile" > anchore_images'
         anchore name: 'anchore_images'
         */
-        sh 'docker run --rm aquasec/trivy irobert0126/imagescantest'
+        sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.2:4954 irobert0126/imagescantest'
     }
     
     stage('Push image') {
