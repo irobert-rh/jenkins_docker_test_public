@@ -31,7 +31,7 @@ node {
         */
         
         // Trivy Image Scanner
-        sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.2:4954 irobert0126/imagescantest'
+        sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.3:4954 irobert0126/imagescantest'
     }
     
     stage('Trivy Plugin Scan') {
