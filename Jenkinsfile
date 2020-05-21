@@ -35,7 +35,7 @@ node {
     }
     
     stage('Trivy Plugin Scan') {
-        aqua locationType: 'local', localImage: 'irobert0126/imagescantest', caCertificates:false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
+        aqua locationType: 'robhinhood', localImage: 'irobert0126/imagescantest', caCertificates:false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
     }
         
     stage('Push image') {
