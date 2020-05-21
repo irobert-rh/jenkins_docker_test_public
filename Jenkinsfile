@@ -23,6 +23,10 @@ node {
         }
     }
     
+    stage('Trivy Plugin Scan') {
+        aqua locationType: 'robhinhood', localImage: 'irobert0126/imagescantest', caCertificates:false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
+    }
+    
     stage('Container Security Scan') {
         // Anchore Image Scanner
         /*
@@ -31,11 +35,8 @@ node {
         */
         
         // Trivy Image Scanner
-        sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.3:4954 irobert0126/imagescantest'
-    }
-    
-    stage('Trivy Plugin Scan') {
-        aqua locationType: 'robhinhood', localImage: 'irobert0126/imagescantest', caCertificates:false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
+        // sh 'docker run --rm --net=bridge aquasec/trivy client --remote http://172.17.0.3:4954 irobert0126/imagescantest'
+        sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/.cache/:/root/.cache/ aquasec/trivy irobert0126/imagescantest'
     }
         
     stage('Push image') {
