@@ -17,7 +17,7 @@ def call(app, build_airflow = false, build_job_name = "image-builder", dockerfil
                     catchError {
                         withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'github-key', keyFileVariable: 'JENKINS_SSH_PRIVATE')]) {
                             checkout scm
-                            aqua locationType: 'local', localImage: 'golang', caCertificates: false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
+                            aqua locationType: 'local', localImage: 'nodejscn/node', caCertificates: false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
                             script {
                                 sh '''#!/bin/bash
                                     set -e
