@@ -10,7 +10,7 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        sh 'docker run -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/.cache/:/root/.cache/ aquasec/trivy -f json golang:stretch'
+        // sh 'docker run -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/.cache/:/root/.cache/ aquasec/trivy -f json golang:stretch'
         //app = docker.build("irobert0126/imagescantest")
     }
 
@@ -24,7 +24,7 @@ node {
     }
     
     stage('Trivy Plugin Scan') {
-        aqua locationType: 'local', localImage: 'golang:stretch', caCertificates: false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
+        aqua locationType: 'local', localImage: 'python3.6', caCertificates: false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
     }
     
     stage('Container Security Scan') {
