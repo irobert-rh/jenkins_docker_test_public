@@ -10,9 +10,6 @@ def call(app, build_airflow = false, build_job_name = "image-builder", dockerfil
         }
         stages {
             stage("Build") {
-                when {
-                    expression { build_job_name == currentBuild.projectName }
-                }
                 steps {
                     catchError {
                         withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'github-key', keyFileVariable: 'JENKINS_SSH_PRIVATE')]) {
@@ -20,6 +17,7 @@ def call(app, build_airflow = false, build_job_name = "image-builder", dockerfil
                             script {
                                 sh '''#!/bin/bash
                                     set -e
+                                    ls -l
                                     echo ${BUILDCOMMIT}
                                 '''
                                 
