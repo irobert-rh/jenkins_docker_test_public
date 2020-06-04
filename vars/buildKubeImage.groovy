@@ -1,29 +1,16 @@
 def call(app, build_airflow = false, build_job_name = "image-builder", dockerfile_path = "./kubernetes/Dockerfile", context_path = ".", add_latest_tag = false, affected_files_path = null) {
     pipeline {
         agent any
-        environment {
-            APP = "${app}"
-            BUILDCOMMIT = "${params.commit}"
-            DOCKERFILE_PATH = "${dockerfile_path}"
-            CONTEXT_PATH = "${context_path}"
-            ADD_LATEST_TAG = "${add_latest_tag}"
-        }
         stages {
             stage("Build") {   
-                when {
-                    expression { build_job_name == currentBuild.projectName }
-                }
                 steps {                    
                     catchError {
-                        withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'github-key', keyFileVariable: 'JENKINS_SSH_PRIVATE')]) {
-                            checkout scm
-                            script {
+                        script {
                                 sh '''#!/bin/bash
                                     set -e
                                 '''
                                 aqua([locationType: 'local', localImage: 'nodejscn/node'])
                             }
-                        }
                     }
                     
                 }
