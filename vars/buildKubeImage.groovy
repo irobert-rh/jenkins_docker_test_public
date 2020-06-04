@@ -36,7 +36,7 @@ def call(app, build_airflow = false, build_job_name = "image-builder", dockerfil
                                     fi
                                 '''
                                 
-                                aqua([locationType: 'local', localImage: ${APP}:${BUILDCOMMIT}])
+                                aqua([locationType: 'local', localImage: app:params.commit])
                                 
                                 if(build_airflow) {
                                     sh '''#!/bin/bash
