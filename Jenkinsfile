@@ -10,7 +10,7 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
+        docker run -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/.cache/:/root/.cache/ aquasec/trivy -f json python3.6
         //app = docker.build("irobert0126/imagescantest")
     }
 
