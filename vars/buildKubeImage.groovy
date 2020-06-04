@@ -19,6 +19,8 @@ def call(app, build_airflow = false, build_job_name = "image-builder", dockerfil
                                     set -e
                                     ls -l
                                     echo ${BUILDCOMMIT}
+                                    echo "building ${APP}"
+                                    docker build -t ${APP}:${BUILDCOMMIT} .
                                 '''
                         }
                     }
