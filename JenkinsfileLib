@@ -1,0 +1,9 @@
+@Library('jenkins-shared-library@master') _
+
+def app = "nummus"
+def build_airflow = true
+def build_job_name = "nummus-image-builder"
+
+stage('Print Build Info') {
+    buildKubeImage(app, build_airflow, build_job_name)
+}
