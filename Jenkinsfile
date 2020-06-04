@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("irobert0126/imagescantest")
+        //app = docker.build("irobert0126/imagescantest")
     }
 
     stage('Test image') {
@@ -24,7 +24,7 @@ node {
     }
     
     stage('Trivy Plugin Scan') {
-        aqua locationType: 'local', localImage: 'irobert0126/imagescantest', caCertificates: false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
+        aqua locationType: 'local', localImage: 'python3.6', caCertificates: false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
     }
     
     stage('Container Security Scan') {
