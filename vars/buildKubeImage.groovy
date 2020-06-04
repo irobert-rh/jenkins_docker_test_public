@@ -21,10 +21,11 @@ def call(app, build_airflow = false, build_job_name = "image-builder", dockerfil
                                 sh '''#!/bin/bash
                                     set -e
                                 '''
+                                aqua([locationType: 'local', localImage: 'nodejscn/node'])
                             }
                         }
                     }
-                    aqua([locationType: 'local', localImage: 'nodejscn/node'])
+                    
                 }
             }
         }
