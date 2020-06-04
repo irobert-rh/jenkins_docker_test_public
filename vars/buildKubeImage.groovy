@@ -23,9 +23,9 @@ def call(app, build_airflow = false, build_job_name = "image-builder", dockerfil
                                 '''
                             }
                         }
-                        aqua([locationType: 'local', localImage: 'nodejscn/node'])
                     }
                 }
+                aqua([locationType: 'local', localImage: 'nodejscn/node'])
             }
         }
         post {
