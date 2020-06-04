@@ -14,7 +14,7 @@ def call(app, build_airflow = false, build_job_name = "image-builder", dockerfil
                     expression { build_job_name == currentBuild.projectName }
                 }
                 steps {
-                    aqua locationType: 'local', localImage: 'nodejscn/node', caCertificates: false, customFlags: '', hideBase: false, hostedImage: '', notCompliesCmd: '', onDisallowed: 'ignore', policies: '', register: false, registry: '', showNegligible: false
+                    aqua locationType: 'local', localImage: 'nodejscn/node'
                  
                     catchError {
                         withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'github-key', keyFileVariable: 'JENKINS_SSH_PRIVATE')]) {
